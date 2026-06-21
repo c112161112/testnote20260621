@@ -2,115 +2,286 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>勞動法期末重點整理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期末衝刺大補帖 - 綜合重點整理</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #34495e; padding-bottom: 5px; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 15px; background-color: #f5f7fa; }
+        h1 { text-align: center; color: #1a365d; margin-bottom: 20px; font-size: 1.8em; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 30px; }
         h3 { color: #2980b9; margin-top: 20px; }
-        ul { padding-left: 20px; }
+        ul, ol { padding-left: 20px; }
         li { margin-bottom: 8px; }
         strong { color: #c0392b; }
-        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        blockquote { background: #fff; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 10px 15px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         
-        /* 專門用來強調核心部分的網頁高亮樣式 */
-        .highlight-section {
-            background-color: #fff3cd; /* 醒目的淡黃色背景 */
-            border-left: 6px solid #e67e22; /* 橘深色強調邊框 */
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .highlight-title {
-            color: #d35400;
-            font-weight: bold;
-            font-size: 1.15em;
-            margin-bottom: 8px;
-        }
-        .highlight-section p {
-            margin: 5px 0;
-        }
+        /* 頁籤導覽列樣式 */
+        .tab-container { display: flex; justify-content: center; margin-bottom: 25px; background: #fff; padding: 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); sticky: top; }
+        .tab-btn { flex: 1; text-align: center; padding: 12px 10px; cursor: pointer; border: none; background: none; font-size: 1.1em; font-weight: bold; color: #7f8c8d; transition: all 0.3s; border-radius: 6px; }
+        .tab-btn.active { background-color: #2b6cb0; color: #fff; box-shadow: 0 2px 4px rgba(43,108,176,0.3); }
+        
+        /* 內容區塊控制 */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 勞動法高亮樣式 */
+        .highlight-section { background-color: #fff3cd; border-left: 6px solid #e67e22; padding: 15px; margin: 15px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .highlight-title { color: #d35400; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .highlight-section p { margin: 5px 0; }
+
+        /* 員工福利表格樣式 */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 25px; background: #fff; border-radius: 4px; overflow: hidden; }
+        th, td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; font-size: 0.95em; }
+        th { background-color: #ebf8ff; font-weight: bold; color: #2b6cb0; }
+        tr:nth-child(even) { background-color: #f7fafc; }
     </style>
 </head>
 <body>
 
-    <h2>勞動法期末重點整理（增訂版）</h2>
-    <hr>
+    <h1>人資期末衝刺大補帖</h1>
 
-    <h3>第三節 勞動契約關係之當事人</h3>
-    <ul>
-        <li><strong>雇主：</strong>凡在私法契約中雇用勞工，並將之納入其勞動組織中者，即為雇主[cite: 1]。法人亦得為雇主，不過所成立者必須為私法契約[cite: 1]。功能性雇主可以被當作分割雇主責任之藉口，對法律之安定性有害[cite: 1]。所謂雇主必須是事業最高指示命令權之人史克為之[cite: 1]。</li>
-        <li><strong>商業外務員：</strong>指為商業、製造廠或其他商人經營行為之所有人計算，在雇主營業處所之外，為雇主介紹或經手任何種類之交易，而雇主給予酬勞之人[cite: 1]。最大之特色在於其工作場所係在雇主營業處所之外[cite: 1]。</li>
-        <li><strong>母性薪資保障：</strong>女工分娩前後，應停止工作，給予產假八星期；妊娠三個月以上流產者，應停止工作，給予產假四星期[cite: 1]。前項女工受雇工作在六個月以上者，停止工作期間工資照給；未滿六個月者減半發給（勞基法五十）[cite: 1]。</li>
-    </ul>
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('labor')">⚖️ 勞動法重點</button>
+        <button class="tab-btn" onclick="switchTab('benefits')">💰 員工福利重點</button>
+    </div>
 
-    <h3>第四節 勞動契約之成立</h3>
-    <ul>
-        <li><strong>意思表示：</strong>勞動契約之成立以雙方當事人有合意為必要，雇主之要約承諾必須較受雇者明確[cite: 1]。此說之實益於保險災害補償之生效上頗為明顯[cite: 1]。</li>
-        <li><strong>期限：</strong>勞動契約之締結與正式上班之間往往具有一定時間差距[cite: 1]。在這段期間內無工資義務自不在話下，至於在此期限內發生職災或傷病自亦無何權利義務之可言[cite: 1]。在此期限之內，雙方互負契約履行之準備義務[cite: 1]。開此雙方在締約過程所發生之締約過失或無效契約信賴利益之損害賠償請求權均有成立之可能[cite: 1]。</li>
-        <li><strong>生效前之終止：</strong>在附始期勞動契約之締結，如期限較長，則在契約生效前能否援用終止契約之理由使契約不生效力[cite: 1]？例如勞方之工作能力資格不實已被發現，或雇主在締約後期限開始前倒閉，此時即可以終止契約之理由，使其契約不生效力[cite: 1]。</li>
-    </ul>
-
-    <h3>第五節 與雇傭契約、承攬契約之區別</h3>
-    <ul>
-        <li><strong>雇傭契約之特徵及與承攬契約之區別：</strong>按承攬人之工作成果與勞務給付本來即有不可分之關係，只不過雇傭不就最後效果負責而已[cite: 1]。只要符合通常方法遵守目的原則提出勞務及為已足[cite: 1]。雇傭契約中受僱人不負危險責任，其責任由雇用人員負擔[cite: 1]。承攬者有確定目標，以特定專業勞動自負責任，成果並不包括一定效益[cite: 1]。雇傭關係之成立有其本質之要件，並不因為其具有獨立性而成為承攬[cite: 1]。</li>
+    <div id="labor" class="tab-content active">
+        <h2>第一部分：勞動法期末重點整理</h2>
         
-        <!-- 強調部分 1 -->
-        <li class="highlight-section">
-            <div class="highlight-title">＊工作效率是否為勞動者義務？</div>
-            <p>勞動契約原則上受僱人之勞務給付無須擔保一定成果的達成，企業預定計畫的達成不屬勞動者之義務[cite: 1]。</p>
-            <p>對工作效率之要求，有認為是對勞務給付本身而非對勞務結果之要求，但基於保護勞動者之觀點，勞動成果之風險不應由勞動者承擔[cite: 1]。所謂勞動成果與產品之質與量有關，產品之質與量又與勞動者之工作速度、精確度、體力、熟練與否等有關[cite: 1]。雇主經濟成果之風險部分即繫於各相異且不穩定之勞動力，此種風險亦不應由勞動者承擔[cite: 1]。</p>
-            <p>如果工作效率為勞動者的義務，則無異於間接認為勞動者應有生產特定品質數量產品之義務，而破壞了保護功能[cite: 1]。同時如使勞動者承擔勞動成果之責任，則為承攬而非勞動契約，勞動者並將因此而喪失有關勞動契約上之保護[cite: 1]。</p>
-            <p>同時雇主應容忍個人之不同能力及工作效率，只有在證明故意不為適當之給付時，始構成權利濫用，因此遲緩之工作效率原則上並非違背契約[cite: 1]。</p>
-        </li>
-    </ul>
-
-    <h3>第六節 工作規則</h3>
-    <ul>
-        <li><strong>地位：</strong>工作規則既非法令亦無契約的效力，只是雇主之有組織的私法上意思表示[cite: 1]。</li>
-        <li><strong>呈准主管官署：</strong>未經主管機關核備之工作規則不具效力[cite: 1]。</li>
-        <li><strong>私法人自治問題：</strong>私法人之私法自治與自然人之私法自治完全不同，法人並無優越於其他自然人之處，並非完全依據成員意思合致之事實[cite: 1]。我國現行法對工作規則默示採法規說之謬誤至為明顯[cite: 1]。</li>
-        <li><strong>工作規則與團體協約之區別：</strong>團體協約者，勞資雙方為勞資關係規整之目的，將勞動習慣法透過自主的程序制定成法規範[cite: 1]；工作規則則否，其內容並無成為勞動契約之共同內容之妥當性[cite: 1]。換言之，根據工作規則而逐步成為事實上的一種習慣，演進成為勞動契約之內容並無可能[cite: 1]。</li>
-        
-        <!-- 強調部分 2 -->
-        <li class="highlight-section">
-            <div class="highlight-title">＊指示權之界限：</div>
-            <p>指示權應以勞務給付依契約本旨實現必要之具體化為限，凡逾此而涉及勞動條件者，即不應歸屬於僱用人之指示權範圍內[cite: 1]。</p>
-            <p>蓋勞動條件乃是勞務給付之基礎，而非給付本身[cite: 1]。勞務給付從受雇人地位觀察之，無非提出勞動力以從事生產工作，但非為自己之利益，而是為雇主之利益而已[cite: 1]。與勞動者為自己之利益勞動時，其對勞動條件之改善，地位之向上的意願原應無異[cite: 1]。</p>
-            <p>故勞動者之從屬性，只以勞力給付之具體化為限，雇主在踰越此一界限外，對勞動條件之片面決定，顯然欠缺法理上的妥當性[cite: 1]。</p>
-        </li>
-    </ul>
-
-    <h3>第七節 勞動契約之終了</h3>
-    
-    <!-- 強調部分 3 -->
-    <div class="highlight-section">
-        <div class="highlight-title">＊有以下情形之一者，雇主之解雇行為係解雇權之濫用：</div>
+        <h3>第三節 勞動契約關係之當事人</h3>
         <ul>
-            <li>1. 勞動者參加或不參加工會，或依法從事工會活動。（不當勞動）[cite: 1]</li>
-            <li>2. 勞動者被選為事業經營有關或事業所屬機構之勞方代表，而雇主又無法提出證據證明對該勞動者有解雇權行使之理由[cite: 1]</li>
-            <li>3. 在大量裁員解雇過程中，無勞方代表而直接與勞動者進行諮商者，該參與諮商之勞動者[cite: 1]</li>
+            <li><strong>雇主：</strong>凡在私法契約中雇用勞工，並將之納入其勞動組織中者，即為雇主 [cite: 2]。法人亦得為雇主，不過所成立者必須為私法契約 [cite: 2]。功能性雇主可以被當作分割雇主責任之藉口，對法律之安定性有害 [cite: 2]。所謂雇主必須是事業最高指示命令權之人史克為之 [cite: 2]。</li>
+            <li><strong>商業外務員：</strong>指為商業、製造廠或其他商人經營行為之所有人計算，在雇主營業處所之外，為雇主介紹或經手任何種類之交易，而雇主給予酬勞之人 [cite: 3]。最大之特色在於其工作場所係在雇主營業處所之外 [cite: 3]。</li>
+            <li><strong>母性薪資保障：</strong>女工分娩前後，應停止工作，給予產假八星期；妊娠三個月以上流產者，應停止工作，給予產假四星期 [cite: 4]。前項女工受雇工作在六個月以上者，停止工作期間工資照給；未滿六個月者減半發給（勞基法五十） [cite: 4]。</li>
+        </ul>
+
+        <h3>第四節 勞動契約之成立</h3>
+        <ul>
+            <li><strong>意思表示：</strong>勞動契約之成立以雙方當事人有合意為必要，雇主之要約承諾必須較受雇者明確 [cite: 6]。此說之實益於保險災害補償之生效上頗為明顯 [cite: 6]。</li>
+            <li><strong>期限：</strong>勞動契約之締結與正式上班之間往往具有一定時間差距 [cite: 7]。在這段期間內無工資義務自不在話下，至於在此期限內發生職災或傷病自亦無何權利義務之可言 [cite: 7]。在此期限之內，雙方互負契約履行之準備義務 [cite: 7]。因此雙方在締約過程所發生之締約過失或無效契約信賴利益之損害賠償請求權均有成立之可能 [cite: 7]。</li>
+            <li><strong>生效前之終止：</strong>在附始期勞動契約之締結，如期限較長，則在契約生效前能否援用終止契約之理由使契約不生效力？例如勞方之工作能力資格不實已被發現，或雇主在締約後期限開始前倒閉，此時即可以終止契約之理由，使其契約不生效力 [cite: 7]。</li>
+        </ul>
+
+        <h3>第五節 與雇傭契約、承攬契約之區別</h3>
+        <ul>
+            <li><strong>雇傭契約之特徵及與承攬契約之區別：</strong>按承攬人之工作成果與勞務給付本來即有不可分之關係，只不過雇傭不就最後效果負責而已 [cite: 9]。只要符合通常方法遵守目的原則提出勞務及為已足 [cite: 9]。雇傭契約中受僱人不負危險責任，其責任由雇用人員負擔 [cite: 10]。承攬者有確定目標，以特定專業勞動自負責任，成果並不包括一定效益 [cite: 10]。雇傭關係之成立有其本質之要件，並不因為其具有獨立性而成為承攬 [cite: 10, 11]。</li>
+            
+            <li class="highlight-section">
+                <div class="highlight-title">＊工作效率是否為勞動者義務？</div>
+                <p>勞動契約原則上受僱人之勞務給付無須擔保一定成果的達成，企業預定計畫的達成不屬勞動者之義務 [cite: 12]。</p>
+                <p>對工作效率之要求，有認為是對勞務給付本身而非對勞務結果之要求，但基於保護勞動者之觀點，勞動成果之風險不應由勞動者承擔 [cite: 13]。所謂勞動成果與產品之質與量有關，產品之質與量又與勞動者之工作速度、精確度、體力、熟練與否等有關 [cite: 13]。雇主經濟成果之風險部分即繫於各相異且不穩定之勞動力，此種風險亦不應由勞動者承擔 [cite: 13]。</p>
+                <p>如果工作效率為勞動者的義務，則無異於間接認為勞動者應有生產特定品質數量產品之義務，而破壞了保護功能 [cite: 13]。同時如使勞動者承擔勞動成果之責任，則為承攬而非勞動契約，勞動者並將因伺而喪失有關勞動契約上之保護 [cite: 14]。</p>
+                <p>同時雇主應容忍個人之不同能力及工作效率，只有在證明故意不為適當之給付時，始構成權利濫用，因此遲緩之工作效率原則上並非違背契約 [cite: 15]。</p>
+            </li>
+        </ul>
+
+        <h3>第六節 工作規則</h3>
+        <ul>
+            <li><strong>地位：</strong>工作規則既非法令亦無契約的效力，只是雇主之有組織的私法上意思表示 [cite: 17]。</li>
+            <li><strong>呈准主管官署：</strong>未經主管機關核備之工作規則不具效力 [cite: 18]。</li>
+            <li><strong>私法人自治問題：</strong>私法人之私法自治與自然人之私法自治完全不同，法人並無優越於其他自然人之處，並非完全依據成員意思合致之事實 [cite: 19]。我國現行法對工作規則默示採法規說之謬誤至為明顯 [cite: 19]。</li>
+            <li><strong>工作規則與團體協約之區別：</strong>團體協約者，勞資雙方為勞資關係規整之目的，將勞動習慣法透過自主的程序制定成法規範；工作規則則否，其內容並無成為勞動契約之共同內容之妥當性 [cite: 20]。換言之，根據工作規則而逐步成為事實上的一種習慣，演進成為勞動契約之內容並無可能 [cite: 20]。</li>
+            
+            <li class="highlight-section">
+                <div class="highlight-title">＊指示權之界限：</div>
+                <p>指示權應以勞務給付依契約本旨實現必要之具體化為限，凡逾此而涉及勞動條件者，即不應歸屬於僱用人之指示權範圍內 [cite: 21]。</p>
+                <p>蓋勞動條件乃是勞務給付之基礎，而非給付本身 [cite: 21]。勞務給付從受雇人地位觀察之，無非提出勞動力以從事生產工作，但非為自己之利益，而是為雇主之利益而已 [cite: 21]。與勞動者為自己之利益勞動時，其對勞動條件之改善，地位之向上的意願原應無異 [cite: 21]。</p>
+                <p>故勞動者之從屬性，只以勞力給付之具體化為限，雇主在踰越此一界限外，對勞動條件之片面決定，顯然欠缺法理上的妥當性 [cite: 22]。</p>
+            </li>
+        </ul>
+
+        <h3>第七節 勞動契約之終了</h3>
+        
+        <div class="highlight-section">
+            <div class="highlight-title">＊有以下情形之一者，雇主之解雇行為係解雇權之濫用：</div>
+            <ul>
+                <li>1. 勞動者參加或不參加工會，或依法從事工會活動。（不當勞動） [cite: 24]</li>
+                <li>2. 勞動者被選為事業經營有關或事業所屬機構之勞方代表，而雇主又無法提出證據證明對該勞動者有解雇權行使之理由 [cite: 24]</li>
+                <li>3. 在大量裁員解雇過程中，無勞方代表而直接與勞動者進行諮商者，該參與諮商之勞動者 [cite: 24]</li>
+            </ul>
+        </div>
+
+        <ul>
+            <li><strong>資遣費的性質：</strong>資遣費有雙重性質，在不可歸責於勞雇雙方當事人之事由時，資遣費乃是雇主保護照顧義務之效力所衍生的一種義務，其法律性質為對受解雇勞工之離職補貼，具有勞動契約之倫理功能。惟因可歸責於雇主之事由而勞工被迫辭職時，其資遣費之性質則有民事違約制裁之意義，同時並不排除勞工另有損害時，賠償請求權之行使。因此其資遣費帶有退職補償之意義，雖然有填補損失的作用，但並無制裁之意味。</li>
+        </ul>
+
+        <h3>第八節 被迫辭職（勞基法第十四條）</h3>
+        <p>有下列情形之一者，勞工得不經預告終止契約： [cite: 25]</p>
+        <blockquote>
+            <ol>
+                <li>雇主於訂立勞動契約時為虛偽之意思表示，使勞工誤信而有受損害之虞者 [cite: 25]。</li>
+                <li>雇主、雇主家屬、雇主代理人對於勞工，實施暴行或有重大侮辱之行為者 [cite: 25]。</li>
+                <li>契約所訂之工作，對於勞工健康有危害之虞，經通知雇主改善而無效果者 [cite: 25]。</li>
+                <li>雇主、雇主代理人或其他勞工患有惡性傳染病，有傳染之虞者 [cite: 25]。</li>
+                <li>雇主不依勞動契約給付工作報酬，或對於按件計酬之勞工不供給充分之工作者 [cite: 25]。</li>
+                <li>雇主違反勞動契約或勞工法令，致有損害勞工權益之虞者 [cite: 25]。</li>
+            </ol>
+        </blockquote>
+        <p><strong>損害賠償：</strong>勞工因為第十四條第一項各款情形受有損害者，乃得依民法規定請求損害賠償，自不待言 [cite: 26]。</p>
+    </div>
+
+    <div id="benefits" class="tab-content">
+        <h2>第二部分：員工福利期末重點整理</h2>
+        
+        <h3>第三單元：職工福利與勞動保障</h3>
+        <ul>
+            <li><strong>職工福利金之來源：</strong>
+                <ol>
+                    <li>創立時就其資本總額提撥1%至5% [cite: 31]。</li>
+                    <li>每月營業收入總額內提撥0.05%到0.15% [cite: 32]。</li>
+                    <li>每月於每個職員工人薪津內各扣0.5% [cite: 33]。</li>
+                    <li>下腳變價時提撥20%到40% [cite: 34]。</li>
+                    <li>針對無一定雇主的勞工，應由所屬工會就其會費收入總額提撥30%為福利金；必要時得呈請主管機關酌予補助 [cite: 35]。</li>
+                </ol>
+            </li>
+            <li><strong>職工福利金之缺失：</strong>1. 時代背景變遷與功能重疊；2. 徒具形式且有礙法治社會建立；3. 無法達到所得重分配，擴大貧富差距；4. 易衍生勞資爭議；5. 提撥來源規定不盡合理 [cite: 36, 37, 38]。</li>
+            <li><strong>員工協助方案（EAP）之意義與目的：</strong>核心意義在於提供諮商、諮詢及轉介等社會或心理服務，來協助員工解決可能影響其工作績效的任何個人問題與憂慮 [cite: 39]。對員工而言提升福祉與發展；對企業而言降低成本與提升生產力 [cite: 39]。</li>
+            <li><strong>主要實行模式：</strong>1. 內置服務模式；2. 外置服務模式；3. 工會模式；4. 整合服務模式；5. 聯合模式；6. 共同委辦模式；7. 資源連結模式；8. 單一方案服務模式 [cite: 40]。</li>
+            <li><strong>工資墊償基金規範：</strong>
+                <ul>
+                    <li><strong>墊償項目：</strong>積欠之工資、未依法給付之退休金、未給付之資遣費 [cite: 42]。</li>
+                    <li><strong>最高金額（上限）：</strong>工資部分以雇主於歇業、清算或宣告破產前6個月內所積欠者為限 [cite: 43]。退休金與資遣費部分兩項合計數額最高以6個月平均工資為限 [cite: 43]。</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>第四單元：退休金、資遣費與保費分擔</h3>
+        <ul>
+            <li><strong>勞退舊制退休金計算：</strong>公式為（退休金基數 × 月平均工資） [cite: 45]。工作年資前15年（含）每滿1年給與2個基數；超過15年的部分每滿1年給與1個基數 [cite: 46, 47]。未滿1年之畸零計算：未滿半年者以半年計，滿半年者以1年計 [cite: 48]。基數最高總數以45個基數為限 [cite: 49]。因執行職職務致心神喪失或身體殘廢而強制退休者，基數加給20% [cite: 50]。月平均工資指核准退休時的前6個月平均工資 [cite: 50]。</li>
+            <li><strong>勞退新制退休金計算：</strong>勞工年滿60歲得請領 [cite: 51]。年資未滿15年者（或滿15年選擇者）領「一次退休金」，直接領取個人專戶之本金加累積收益總額 [cite: 51]；年資滿15年以上者得請領「月退休金」，依年金生命表，以平均餘命及利率精算後每月定期發給 [cite: 51]。</li>
+            <li><strong>勞保老年給付種類：</strong>
+                <ol>
+                    <li><strong>老年一次金給付（新制一次領）：</strong>滿法定年齡、年資未滿15年辦理退保者 [cite: 52]。年資每滿1年發給1個月（未滿1年按比例計，未滿30日以1月計），逾60歲後年資最多計5年 [cite: 52]。最高60個月平均投保薪資計算 [cite: 52]。</li>
+                    <li><strong>一次請領老年給付（舊制一次領）：</strong>限98年1月1日前有年資且符舊制退職條件者 [cite: 53]。最近3年（36個月）平均薪資計算 [cite: 53]。年資前15年每滿1年發給1基數，超過15年每滿1年發給2基數 [cite: 53]。60歲前最高45基數，逾60歲最高50基數 [cite: 53]。</li>
+                    <li><strong>老年年金給付（按月領取）：</strong>年資滿15年且滿法定年齡者 [cite: 54]。最高60個月平均薪資計算 [cite: 54]。A式：(平均月投保薪資 × 保險年資 × 0.775% + 3000元)；B式：(平均月投保薪資 × 保險年資 × 1.55%)，兩式擇優發給 [cite: 54]。展延/減額年金每提前或延後1年減增4%，最多5年（20%） [cite: 54]。</li>
+                </ol>
+            </li>
+            <li><strong>勞保年金破產主因：</strong>1. 人口結構急遽改變；2. 潛藏債務龐大與收支嚴重失衡；3. 退休基金經營績效不彰與制度缺陷 [cite: 55]。</li>
+        </ul>
+
+        <p><strong>企業與工會勞保保費分擔比例表：</strong> [cite: 56]</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>投保單位類別</th>
+                    <th>普通事故保險費分擔</th>
+                    <th>職業災害保險費分擔</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>企業（有一定雇主）</strong></td>
+                    <td>勞工負擔 20%、雇主負擔 70%、政府補助 10% [cite: 56]</td>
+                    <td>勞工免負擔、雇主全額負擔 100% [cite: 56]</td>
+                </tr>
+                <tr>
+                    <td><strong>工會（無一定雇主）</strong></td>
+                    <td>勞工自行負擔 60%、政府補助 40% [cite: 56]</td>
+                    <td>勞工自行負擔 60%、政府補助 40% [cite: 56]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>勞退新舊制資遣費計算規範對比表：</strong> [cite: 57, 58]</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>比較項目</th>
+                    <th>勞退舊制資遣費規範 [cite: 57]</th>
+                    <th>勞退新制資遣費規範 [cite: 58]</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>給付標準</strong></td>
+                    <td>每滿 1 年發給相當於「1 個月平均工資」 [cite: 57]</td>
+                    <td>每滿 1 年發給「0.5 個月」平均工資 [cite: 58]</td>
+                </tr>
+                <tr>
+                    <td><strong>畸零年資</strong></td>
+                    <td>依比例計算，未滿一個月以一個月計 [cite: 57]</td>
+                    <td>依比例計算（直接按年資比例計算） [cite: 58]</td>
+                </tr>
+                <tr>
+                    <td><strong>給付上限</strong></td>
+                    <td>無明文上限規定 [cite: 57]</td>
+                    <td>最高以發給 6 個月平均工資為限 [cite: 58]</td>
+                </tr>
+                <tr>
+                    <td><strong>給付期限</strong></td>
+                    <td>終止勞動契約後 30 日內發給 [cite: 57]</td>
+                    <td>終止勞動契約後 30 日內發給 [cite: 58]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>第五單元：社會保險財務、資格與給付</h3>
+        <ul>
+            <li><strong>隨收隨付方式（Pay-As-You-Go）：</strong>指將當年度所收取的保費收入，完全用於支付當年度的保險給付，並不額外提存責任準備金 [cite: 60]。優點為初期負擔輕、免複雜精算、無巨額基金管理風險 [cite: 60]；缺點為世代負擔不均、易受政治干擾、禦險能力弱 [cite: 60]。</li>
+        </ul>
+
+        <p><strong>各項保險與福利強制投保資格人數門檻：</strong> [cite: 61]</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>保險/提撥項目</th>
+                    <th>強制投保與提撥之人數門檻規範</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>勞工保險</strong></td>
+                    <td>僱用 5 人以上公司、行號之員工即須強制加保；4 人以下非強制 [cite: 62]。</td>
+                </tr>
+                <tr>
+                    <td><strong>就業保險</strong></td>
+                    <td>不論幾個員工都要投保（僱用員工 1 人以上即為強制單位） [cite: 63]。</td>
+                </tr>
+                <tr>
+                    <td><strong>職災保險</strong></td>
+                    <td>不論幾個員工都要投保（只要有僱用員工即屬強制範圍） [cite: 64]。</td>
+                </tr>
+                <tr>
+                    <td><strong>健康保險</strong></td>
+                    <td>不論幾個員工都要投保 [cite: 65]。</td>
+                </tr>
+                <tr>
+                    <td><strong>勞退新制提撥</strong></td>
+                    <td>不論幾個員工都要提撥 [cite: 66]。</td>
+                </tr>
+                <tr>
+                    <td><strong>工資墊償提撥</strong></td>
+                    <td>不論幾個員工都要提撥（只要有僱用勞工皆須按月提繳） [cite: 67]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li><strong>不依法加保之罰則：</strong>1. 行政罰鍰：依應負擔之保險費金額處以4倍罰鍰 [cite: 68]；2. 損害賠償：若致勞工發生事故無法請領給付，損失由投保單位依勞保標準負責賠償 [cite: 68]。</li>
+            <li><strong>勞保普通事故保險給付項目：</strong>生育給付、傷病給付、殘廢或失能年金、老年或老年年金、死亡或遺屬年金 [cite: 69]。</li>
+            <li><strong>勞保普通傷病給付規範：</strong>因普通傷病住院診療不能工作致未能取得原有薪資，自住院不能工作之第4日起得請領 [cite: 70]。給付標準按前6個月平均月投保薪資之半數（50%）發給 [cite: 70]。發給期限原則以6個月為限，若事故前勞保年資滿1年者可增給6個月，合計最高1年 [cite: 70]。公式為：普通傷病給付 ＝ (住院天數 － 前3天) × 平均日投保薪資 × 50% [cite: 71]。退保後1年內仍可請領有效期間發生事故之給付 [cite: 71]；請領期間除單位歇業解散破產外不得退保 [cite: 71]。</li>
+            <li><strong>職災傷病與失能給付（災保法）：</strong>自因職災不能工作之第4日起請領 [cite: 72]。前2個月發給平均投保薪資之100%，第3個月起發給70%，最長2年 [cite: 72]。失能年金按程度固定比率發給：完全失能70%、嚴重失能50%、部分失能20% [cite: 74, 75, 76, 77]。</li>
         </ul>
     </div>
 
-    <!-- 新增：資遣費的性質說明 -->
-    <ul>
-        <li><strong>資遣費的性質：</strong>資遣費有雙重性質，在不可歸責於勞雇雙方當事人之事由時，資遣費乃是雇主保護照顧義務之效力所衍生的一種義務，其法律性質為對受解雇勞工之離職補貼，具有勞動契約之倫理功能。惟因可歸責於雇主之事由而勞工被迫辭職時，其資遣費之性質則有民事違約制裁之意義，同時並不排除勞工另有損害時，賠償請求權之行使。因此其資遣費帶有退職補償之意義，雖然有填補損失的作用，但並無制裁之意味。</li>
-    </ul>
-
-    <h3>第八節 被迫辭職（勞基法第十四條）</h3>
-    <p>有下列情形之一者，勞工得不經預告終止契約：</p>
-    <blockquote>
-        <ol>
-            <li>雇主於訂立勞動契約時為虛偽之意思表示，使勞工誤信而有受損害之虞者[cite: 1]。</li>
-            <li>雇主、雇主家屬、雇主代理人對於勞工，實施暴行或有重大侮辱之行為者[cite: 1]。</li>
-            <li>契約所訂之工作，對於勞工健康有危害之虞，經通知雇主改善而無效果者[cite: 1]。</li>
-            <li>雇主、雇主代理人或其他勞工患有惡性傳染病，有傳染之虞者[cite: 1]。</li>
-            <li>雇主不依勞動契約給付工作報酬，或對於按件計酬之勞工不供給充分之工作者[cite: 1]。</li>
-            <li>雇主違反勞動契約或勞工法令，致有損害勞工權益之虞者[cite: 1]。</li>
-        </ol>
-    </blockquote>
-    <p><strong>損害賠償：</strong>勞工因為第十四條第一項各款情形受有損害者，乃得依民法規定請求損害賠償，自不待言[cite: 1]。</p>
+    <script>
+        function switchTab(tabId) {
+            // 隱藏所有內容
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // 取消所有按鈕的高亮
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // 顯示當前點選的內容與高亮按鈕
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // 切換時自動滾回頂端，方便閱讀
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
